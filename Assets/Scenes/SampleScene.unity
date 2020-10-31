@@ -329,6 +329,7 @@ MonoBehaviour:
   height: 6
   hexCellPrefab: {fileID: 7804331935091327049, guid: bfdf5bc87fa1f3c4fb957dc68e8bbaf4,
     type: 3}
+  unitsOfCellOffset: 10
 --- !u!4 &1608414981
 Transform:
   m_ObjectHideFlags: 0

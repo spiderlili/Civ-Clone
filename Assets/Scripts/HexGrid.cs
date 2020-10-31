@@ -7,6 +7,8 @@ public class HexGrid : MonoBehaviour
     public int width = 6;
     public int height = 6;
     public HexCell hexCellPrefab;
+    [Tooltip("Default planes are 10 by 10 units.")]
+    public float cellOffsetDistance = 10f;
 
     HexCell[] cells;
 
@@ -26,9 +28,9 @@ public class HexGrid : MonoBehaviour
     void CreateCell(int x, int z, int i)
     {
         Vector3 position;
-        position.x = x * 10f;
+        position.x = x * cellOffsetDistance;
         position.y = 0f;
-        position.z = z * 10f;
+        position.z = z * cellOffsetDistance;
 
         if (hexCellPrefab != null)
         {
