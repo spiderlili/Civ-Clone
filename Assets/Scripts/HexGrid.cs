@@ -37,6 +37,7 @@ public class HexGrid : MonoBehaviour
         position.y = 0f;
         position.z = z * cellOffsetDistance;
 
+        //construct hex grid with hex cells
         if (hexCellPrefab != null)
         {
             HexCell cell = cells[i] = Instantiate<HexCell>(hexCellPrefab);
@@ -48,6 +49,7 @@ public class HexGrid : MonoBehaviour
             Debug.Log("hexCellPrefab has not been assigned! Cannot create hex grid");
         }
 
+        //debug coordinates of the cells
         if (gridCanvas != null)
         {
             if (cellLabelTextPrefab != null)
