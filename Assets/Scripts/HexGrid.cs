@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HexGrid : MonoBehaviour
 {
@@ -9,11 +11,14 @@ public class HexGrid : MonoBehaviour
     public HexCell hexCellPrefab;
     [Tooltip("Default planes are 10 by 10 units.")]
     public float cellOffsetDistance = 10f;
-
     HexCell[] cells;
+
+    public TMP_Text cellLabelTextPrefab;
+    [SerializeField] private Canvas gridCanvas;
 
     void Awake()
     {
+        gridCanvas = gameObject.GetComponentInChildren<Canvas>();
         cells = new HexCell[height * width];
 
         for (int z = 0, i = 0; z < height; z++)
@@ -43,5 +48,23 @@ public class HexGrid : MonoBehaviour
             Debug.Log("hexCellPrefab has not been assigned! Cannot create hex grid");
         }
 
+        if (gridCanvas != null)
+        {
+            if (cellLabelTextPrefab != null)
+            {
+                TMP_Text label = Instantiate<TMP_Text>(cellLabelTextPrefab);
+                label.rectTransform.SetParent(gridCanvas.transform, false);
+                label.rectTransform.anchoredPosition = new Vector2(position.x, position.z);
+                label.text = x.ToString() + "\n" + z.ToString();
+            }
+            else
+            {
+                Debug.Log("text label prefab has not been assigned");
+            }
+        }
+        else
+        {
+            Debug.Log("Grid canvas is null");
+        }
     }
 }
