@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class HexMatrices : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //derive the inner radius of a hexagon
+    public const float outerRadius = 10f;
+    public const float innerRadius = outerRadius * 0.866025404f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public static Vector3[] corners = {
+        new Vector3(0f, 0f, outerRadius),
+        new Vector3(innerRadius, 0f, 0.5f * outerRadius),
+        new Vector3(innerRadius, 0f, -0.5f * outerRadius),
+        new Vector3(0f, 0f, -outerRadius),
+        new Vector3(-innerRadius, 0f, -0.5f * outerRadius),
+        new Vector3(-innerRadius, 0f, 0.5f * outerRadius)
+    };
 }
